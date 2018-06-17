@@ -266,9 +266,9 @@ module.exports = function (options) {
 				let result = await contract.approve(to, amount, { from: from })
 				let log = result.logs[0]
 				assert.equal(log.event, 'Approval')
-				assert.equal(log.args.owner, from)
-				assert.equal(log.args.spender, to)
-				expect(log.args.value).to.be.bignumber.equal(amount)
+				assert.equal(log.args._owner, from)
+				assert.equal(log.args._spender, to)
+				expect(log.args._value).to.be.bignumber.equal(amount)
 			}
 		})
 
@@ -361,9 +361,9 @@ module.exports = function (options) {
 				let result = await contract.transfer(to, amount, { from: from })
 				let log = result.logs[0]
 				assert.equal(log.event, 'Transfer')
-				assert.equal(log.args.from, from)
-				assert.equal(log.args.to, to)
-				expect(log.args.value).to.be.bignumber.equal(amount)
+				assert.equal(log.args._from, from)
+				assert.equal(log.args._to, to)
+				expect(log.args._value).to.be.bignumber.equal(amount)
 			}
 		})
 
@@ -516,9 +516,9 @@ module.exports = function (options) {
 				let result = await contract.transferFrom(from, to, amount, { from: via })
 				let log = result.logs[0]
 				assert.equal(log.event, 'Transfer')
-				assert.equal(log.args.from, from)
-				assert.equal(log.args.to, to)
-				expect(log.args.value).to.be.bignumber.equal(amount)
+				assert.equal(log.args._from, from)
+				assert.equal(log.args._to, to)
+				expect(log.args._value).to.be.bignumber.equal(amount)
 			}
 		})
 	})
@@ -593,9 +593,9 @@ module.exports = function (options) {
 					let result = await contract.increaseApproval(to, byAmount, { from: from })
 					let log = result.logs[0]
 					assert.equal(log.event, 'Approval')
-					assert.equal(log.args.owner, from)
-					assert.equal(log.args.spender, to)
-					expect(log.args.value).to.be.bignumber.equal(new web3.BigNumber(fromAmount).plus(byAmount))
+					assert.equal(log.args._owner, from)
+					assert.equal(log.args._spender, to)
+					expect(log.args._value).to.be.bignumber.equal(new web3.BigNumber(fromAmount).plus(byAmount))
 				}
 			})
 
@@ -640,9 +640,9 @@ module.exports = function (options) {
 					let result = await contract.decreaseApproval(to, byAmount, { from: from })
 					let log = result.logs[0]
 					assert.equal(log.event, 'Approval')
-					assert.equal(log.args.owner, from)
-					assert.equal(log.args.spender, to)
-					expect(log.args.value).to.be.bignumber.equal(new web3.BigNumber(fromAmount).minus(byAmount))
+					assert.equal(log.args._owner, from)
+					assert.equal(log.args._spender, to)
+					expect(log.args._value).to.be.bignumber.equal(new web3.BigNumber(fromAmount).minus(byAmount))
 				}
 			})
 		})
